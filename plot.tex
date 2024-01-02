@@ -1,0 +1,616 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage[T1]{fontenc}
+\pgfplotsset{compat=1.16}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+\hspace*{-5cm} % Przesunięcie w lewo o 2 cm (możesz dostosować)
+\begin{axis}[
+ trim axis left,
+  title={Wykres zależności I(U) Schemat A dla żarówki},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [A]},
+  grid=major,
+  width=1.6\textwidth,
+  height=1.6\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=0,
+  xmax=25,
+  ymin=0.2,
+  ymax=1,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+ x y ey   ex
+1.97    0.30    0.056   0.01985
+3.97    0.38    0.0576  0.02485
+5.94    0.45    0.059   0.0397
+7.96    0.52    0.0604  0.0498
+9.92    0.58    0.0616  0.0596
+11.93   0.63    0.0626  0.06965
+13.89   0.68    0.0636  0.07945
+15.92   0.72    0.0644  0.0896
+17.86   0.77    0.0654  0.0993
+19.86   0.81    0.0662  0.1093
+21.8    0.86    0.0672  0.209
+23.8    0.90    0.068   0.219
+};
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+] {
+x y ey   ex
+1.97    0.30    0.056   0.01985
+3.97    0.38    0.0576  0.02485
+5.94    0.45    0.059   0.0397
+7.96    0.52    0.0604  0.0498
+9.92    0.58    0.0616  0.0596
+11.93   0.63    0.0626  0.06965
+13.89   0.68    0.0636  0.07945
+15.92   0.72    0.0644  0.0896
+17.86   0.77    0.0654  0.0993
+19.86   0.81    0.0662  0.1093
+21.8    0.86    0.0672  0.209
+23.8    0.90    0.068   0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+\begin{tikzpicture}
+\hspace*{-5cm} % Przesunięcie w lewo o 2 cm (możesz dostosować)
+\begin{axis}[
+  title={Wykres zależności I(U) Schemat B dla żarówki},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [A]},
+  grid=major,
+  width=1.6\textwidth,
+  height=1.6\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=0,
+  xmax=25,
+  ymin=0.2,
+  ymax=1,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+x y ey   ex
+1.97    0.27    0.0554  0.01985
+3.97    0.36    0.0572  0.02985
+5.99    0.44    0.0588  0.03995
+7.91    0.5     0.06    0.04955
+9.94    0.56    0.0612  0.0597
+11.88   0.62    0.0624  0.0694
+13.87   0.67    0.0634  0.07935
+15.89   0.72    0.0644  0.08945
+17.91   0.76    0.0652  0.09955
+19.83   0.81    0.0662  0.10915
+21.8    0.85    0.067   0.209
+23.8    0.89    0.0678  0.219
+};
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+] {
+x y ey   ex
+1.97    0.27    0.0554  0.01985
+3.97    0.36    0.0572  0.02985
+5.99    0.44    0.0588  0.03995
+7.91    0.5     0.06    0.04955
+9.94    0.56    0.0612  0.0597
+11.88   0.62    0.0624  0.0694
+13.87   0.67    0.0634  0.07935
+15.89   0.72    0.0644  0.08945
+17.91   0.76    0.0652  0.09955
+19.83   0.81    0.0662  0.10915
+21.8    0.85    0.067   0.209
+23.8    0.89    0.0678  0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\hspace*{-5cm} % Przesunięcie w lewo o 2 cm (możesz dostosować)
+\begin{axis}[
+  title={Wykres zależności I(U) Schemat A dla drutu oporowego},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [mA]},
+  grid=major,
+  width=1.7\textwidth,
+  height=1.7\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=1,
+  xmax=25,
+  ymin=0,
+  ymax=260,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+x y ey   ex
+1.99    16.9  0.3028    0.01995
+3.96    33.7  0.5044    0.0298
+5.96    50.7  0.7084    0.0398
+7.88    67.1  0.9052    0.0494
+9.85    84   1.108     0.05925
+11.86   101.4 1.3168    0.0693
+13.77   118.1  1.5172    0.07885
+15.73   135.2  1.7224    0.08865
+17.72   150.6  1.9072    0.0986
+19.67   169.6  2.1352    0.10835
+21.6    187   2.344     0.208
+23.8    200     54       0.219
+};
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+] {
+x y ey   ex
+1.99    16.9  0.3028    0.01995
+3.96    33.7  0.5044    0.0298
+5.96    50.7  0.7084    0.0398
+7.88    67.1  0.9052    0.0494
+9.85    84   1.108     0.05925
+11.86   101.4 1.3168    0.0693
+13.77   118.1  1.5172    0.07885
+15.73   135.2  1.7224    0.08865
+17.72   150.6  1.9072    0.0986
+19.67   169.6  2.1352    0.10835
+21.6    187   2.344     0.208
+23.8    200     54       0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\hspace*{-5cm} % Przesunięcie w lewo o 2 cm (możesz dostosować)
+\begin{axis}[
+  title={Wykres zależności I(U) Schemat B dla drutu oporowego},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [mA]},
+  grid=major,
+  width=1.7\textwidth,
+  height=1.7\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=0,
+  xmax=25,
+  ymin=10,
+  ymax=260,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+x y ey   ex
+1.99    17.4  0.3088    0.01995
+3.95    34.6  0.5152    0.02975
+5.9     51.6  0.7192    0.0395
+7.87    68.8  0.9256    0.04935
+9.81    85.8  1.1296    0.05905
+11.8    103.2  1.3384    0.069
+13.76   120.4  1.5448    0.0788
+15.75   137.9  1.7548    0.08875
+17.66   154.8  1.9576    0.0983
+19.64   172.3  2.1676    0.1082
+21.6    189.8  2.3776    0.208
+23.8    200    54       0.219
+};
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+]  {
+x y ey   ex
+1.99    17.4  0.3088    0.01995
+3.95    34.6  0.5152    0.02975
+5.9     51.6  0.7192    0.0395
+7.87    68.8  0.9256    0.04935
+9.81    85.8  1.1296    0.05905
+11.8    103.2  1.3384    0.069
+13.76   120.4  1.5448    0.0788
+15.75   137.9  1.7548    0.08875
+17.66   154.8  1.9576    0.0983
+19.64   172.3  2.1676    0.1082
+21.6    189.8  2.3776    0.208
+23.8    200    54       0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+\begin{figure}
+\centering
+
+\begin{tikzpicture}
+\begin{axis}[
+  title={Porównanie wykresów Schemat A i B dla żarówki},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [A]},
+  grid=major,
+  width=0.8\textwidth,
+  height=0.8\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=0,
+  xmax=25,
+  ymin=0.2,
+  ymax=1,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+% Linie dla Schematu A
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+  x y ey   ex
+  1.97    0.30    0.056   0.01985
+  3.97    0.38    0.0576  0.02485
+  5.94    0.45    0.059   0.0397
+  7.96    0.52    0.0604  0.0498
+  9.92    0.58    0.0616  0.0596
+  11.93   0.63    0.0626  0.06965
+  13.89   0.68    0.0636  0.07945
+  15.92   0.72    0.0644  0.0896
+  17.86   0.77    0.0654  0.0993
+  19.86   0.81    0.0662  0.1093
+  21.8    0.86    0.0672  0.209
+  23.8    0.90    0.068   0.219
+};
+
+% Linie dla Schematu B
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+  x y ey   ex
+  1.97    0.27    0.0554  0.01985
+  3.97    0.36    0.0572  0.02985
+  5.99    0.44    0.0588  0.03995
+  7.91    0.5     0.06    0.04955
+  9.94    0.56    0.0612  0.0597
+  11.88   0.62    0.0624  0.0694
+  13.87   0.67    0.0634  0.07935
+  15.89   0.72    0.0644  0.08945
+  17.91   0.76    0.0652  0.09955
+  19.83   0.81    0.0662  0.10915
+  21.8    0.85    0.067   0.209
+  23.8    0.89    0.0678  0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[
+  title={Porównanie wykresów Schemat A i B dla drutu oporowego},
+  xlabel={Napięcie [V]},
+  ylabel={Natężenie [mA]},
+  grid=major,
+  width=0.5\textwidth,
+  height=0.5\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=1,
+  xmax=25,
+  ymin=0,
+  ymax=260,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+% Linie dla Schematu A (dla drutu oporowego)
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+  x y ey   ex
+  1.99    16.9  0.3028    0.01995
+  3.96    33.7  0.5044    0.0298
+  5.96    50.7  0.7084    0.0398
+  7.88    67.1  0.9052    0.0494
+  9.85    84   1.108     0.05925
+  11.86   101.4 1.3168    0.0693
+  13.77   118.1  1.5172    0.07885
+  15.73   135.2  1.7224    0.08865
+  17.72   150.6  1.9072    0.0986
+  19.67   169.6  2.1352    0.10835
+  21.6    187   2.344     0.208
+  23.8    200     54       0.219
+};
+
+% Linie dla Schematu B (dla drutu oporowego)
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+  x y ey   ex
+  1.99    17.4  0.3088    0.01995
+  3.95    34.6  0.5152    0.02975
+  5.9     51.6  0.7192    0.0395
+  7.87    68.8  0.9256    0.04935
+  9.81    85.8  1.1296    0.05905
+  11.8    103.2  1.3384    0.069
+  13.76   120.4  1.5448    0.0788
+  15.75   137.9  1.7548    0.08875
+  17.66   154.8  1.9576    0.0983
+  19.64   172.3  2.1676    0.1082
+  21.6    189.8  2.3776    0.208
+  23.8    200    54       0.219
+};
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{Porównanie wykresów dla różnych obwodów pomiarowych }
+\end{figure}
+
+\begin{tikzpicture}
+\begin{axis}[
+  title={Zależność R(I) dla żarówki },
+  ylabel={Rezystancja [R]},
+  xlabel={Natężenie [A]},
+  grid=major,
+  width=1\textwidth,
+  height=1\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=0.2,
+  xmax=1,
+  ymin=4,
+  ymax=30,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+% Linie dla Schematu A (dla drutu oporowego)
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+] {
+  y  x ey   ex
+  6.56    0.27  1.6    0.0554
+  10.47    0.36  1.9    0.0572
+  13.2    0.44     2.0 0.0588
+  15.30    0.5   2.0  0.06
+  17.1   0.56     2.1  0.0612
+  18.93   0.62  2.1    0.0624
+  20.42   0.67  2.1    0.0634
+  22.1   0.72   2.1 0.0644
+  23.19   0.76  2.2    0.0652
+  24.51   0.81  2.2    0.0662
+  25.34    0.86   2.3     0.0667
+  26.44    0.89     2.3       0.0678
+};
+
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+]  {
+  y  x ey   ex
+  6.56    0.27  1.6    0.0554
+  10.47    0.36  1.9    0.0572
+  13.2    0.44     2.0 0.0588
+  15.30    0.5   2.0  0.06
+  17.1   0.56     2.1  0.0612
+  18.93   0.62  2.1    0.0624
+  20.42   0.67  2.1    0.0634
+  22.1   0.72   2.1 0.0644
+  23.19   0.76  2.2    0.0652
+  24.51   0.81  2.2    0.0662
+  25.34    0.86   2.3     0.0667
+  26.44    0.89     2.3       0.0678
+};
+
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[
+  title={Zależność R(I) dla oporu drutowego },
+  ylabel={Rezystancja [R]},
+  xlabel={Natężenie [mA]},
+  grid=major,
+  width=1\textwidth,
+  height=1\textwidth,
+  enlargelimits=false,
+  scaled y ticks=false,
+  xmin=10,
+  xmax=200,
+  ymin=110,
+  ymax=118,
+  mark size=1, % Rozmiar punktów pomiarowych
+  only marks,  % Tylko punkty, bez linii
+]
+
+% Linie dla Schematu A (dla drutu oporowego)
+\addplot+ [
+  error bars/.cd,
+  x dir=both,
+  x explicit,
+  y dir=both,
+  y explicit,
+] table [
+  x=x,
+  y=y,
+  x error plus=ex,
+  x error minus=ex,
+  y error plus=ey,
+  y error minus=ey,
+]  {
+  y  x ey   ex
+  114.36    17.4  3.2    0.3
+  114.16    34.6  2.6    0.51
+  114.34   51.6  2.4    0.71
+  114.38    68.8  2.3   0.92
+  114.33   85.8    2.2   1.12
+  114.34   103.2 2.2    1.33
+  114.28   120.4 2.2    1.54
+  114.21  137.9  2.1   1.75
+  114.08   154.8  2.1    1.95
+  113.98   172.3  2.1    2.16
+     113.80 189.0   2.6     2.37
+
+};
+
+% Linia aproksymacji (czarna, przerywana)
+\addplot [smooth, black, dashed] table [
+  x=x,
+  y={create col/linear regression={y=y}}
+] {
+  y  x ex   ey
+  114.36    17.4  3.2    0.3
+  114.16    34.6  2.6    0.51
+  114.34   51.6  2.4    0.71
+  114.38    68.8  2.3   0.92
+  114.33   85.8    2.2   1.12
+  114.34   103.2 2.2    1.33
+  114.28   120.4 2.2    1.54
+  114.21  137.9  2.1   1.75
+  114.08   154.8  2.1    1.95
+  113.98   172.3  2.1    2.16
+     113.80 189.0   2.6     2.37
+
+};
+
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+\end{document}
